@@ -18,13 +18,10 @@
   programs.fish.enable = true;
   programs.fish.functions = {
   	nxos-fbld.body = ''
-		cd ~/dotfiles
-		git add .
-		git commit -m 'nix update'
-		sudo nixos-rebuild switch --flake ~/dotfiles
+		sudo nixos-rebuild switch --flake ~/nixcfg/system
 	'';
 
-	hmgr-fbld.body = "home-manager switch --flake ~/dotfiles/home-manager";
+	hmgr-fbld.body = "home-manager switch --flake ~/nixcfg/home-manager";
 
 	nxsh.body = ''
 		argparse c/cmd -- $argv
