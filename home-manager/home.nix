@@ -16,6 +16,18 @@
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
   programs.fish.enable = true;
+
+  programs = {
+    nushell = {
+      enable = true;
+      extraConfig = ''
+        $env.config.show_banner = false
+      '';
+    };
+    carapace.enable = true;
+    starship.enable = true;
+  };
+
   programs.fish.functions = {
   	nxos-fbld.body = ''
 		sudo nixos-rebuild switch --flake ~/nixcfg/system
@@ -63,6 +75,7 @@
     emacs
     btop
     libreoffice-qt6
+    vivid
   ];
 
   gtk = {
