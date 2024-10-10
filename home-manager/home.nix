@@ -26,6 +26,7 @@
     };
     carapace.enable = true;
     starship.enable = true;
+    emacs.enable = true;
   };
 
   programs.fish.functions = {
@@ -72,7 +73,6 @@
     vesktop
     ripgrep
     fd
-    emacs
     btop
     libreoffice-qt6
     vivid
