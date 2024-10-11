@@ -30,22 +30,22 @@
   };
 
   programs.fish.functions = {
-  	nxos-fbld.body = ''
-		sudo nixos-rebuild switch --flake ~/nixcfg/system
-	'';
+    nxos-fbld.body = ''
+    sudo nixos-rebuild switch --flake ~/nixcfg/system
+  '';
 
-	hmgr-fbld.body = "home-manager switch --flake ~/nixcfg/home-manager";
+  hmgr-fbld.body = "home-manager switch --flake ~/nixcfg/home-manager";
 
-	nxsh.body = ''
-		argparse c/cmd -- $argv
-		or return
+  nxsh.body = ''
+    argparse c/cmd -- $argv
+    or return
 
-		if set -ql _flag_cmd
-			nix-shell -p $argv[1] --run $argv[2]
-		else
-			nix-shell -p $argv[1] --run $argv[1]
-		end
-	'';
+    if set -ql _flag_cmd
+      nix-shell -p $argv[1] --run $argv[2]
+    else
+      nix-shell -p $argv[1] --run $argv[1]
+    end
+  '';
   };
 
   # The home.packages option allows you to install Nix packages into your
@@ -76,6 +76,8 @@
     btop
     libreoffice-qt6
     vivid
+
+    zls
   ];
 
   gtk = {

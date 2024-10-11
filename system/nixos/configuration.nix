@@ -77,7 +77,7 @@ in
     fira-code-symbols
     jetbrains-mono
     inter
-    nunito
+    google-fonts
   ];
 
   services.greetd = {
