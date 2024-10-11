@@ -89,17 +89,12 @@ $env.NU_PLUGIN_DIRS = [
 # $env.PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
 # An alternate way to add entries to $env.PATH is to use the custom command `path add`
 # which is built into the nushell stdlib:
-use std "path add"
-$env.PATH = ($env.PATH | split row (char esep))
-path add "/home/ksp/.local/share/coursier/bin"
+# use std "path add"
+# $env.PATH = ($env.PATH | split row (char esep))
+# path add "/home/ksp/.local/share/coursier/bin"
 # path add ($env.CARGO_HOME | path join "bin")
 # path add ($env.HOME | path join ".local" "bin")
-$env.PATH = ($env.PATH | uniq)
-
-$env.XDG_DATA_HOME = '/home/ksp/.local/share'
-$env.XDG_CONFIG_HOME = '/home/ksp/.config'
-$env.XDG_STATE_HOME = '/home/ksp/.local/state'
-$env.XDG_CACHE_HOME = '/home/ksp/.cache'
+# $env.PATH = ($env.PATH | uniq)
 
 # Display an XKCD comic using the Kitty image protocol
 def xkcd [
@@ -121,12 +116,3 @@ alias edit = emacsclient # emacs best editor fr
 $env.EDITOR = 'emacsclient'
 
 $env.LS_COLORS = (vivid generate molokai | str trim)
-
-mkdir ~/.cache/starship
-starship init nu | save -f ~/.cache/starship/init.nu
-
-$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-mkdir ~/.cache/carapace
-carapace _carapace nushell | save --force ~/.cache/carapace/init.nu
-
-zoxide init nushell | save -f ~/.zoxide.nu

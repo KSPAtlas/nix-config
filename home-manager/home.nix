@@ -25,6 +25,8 @@
     };
     carapace.enable = true;
     carapace.enableNushellIntegration = true;
+    zoxide.enable = true;
+    zoxide.enableNushellIntegration = true;
     # starship.enable = true;
     emacs.enable = true;
   };
@@ -118,8 +120,10 @@
     ".config/foot/foot.ini".source = dotfiles/foot.ini;
     ".config/foot/theme.ini".source = "${builtins.fetchGit {
         url = "https://github.com/tinted-theming/base16-foot";
-	rev = "1547efe73638522fe41253d439467757f32a2fb5";
     }}/colors/base16-monokai.ini";
+    ".config/nushell/theme.nu".source = "${builtins.fetchGit {
+      url = "https://github.com/nushell/nu_scripts";
+    }}/themes/nu-themes/monokai-dark.nu";
   };
 
   # Home Manager can also manage your environment variables through
