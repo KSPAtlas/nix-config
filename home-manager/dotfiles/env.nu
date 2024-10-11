@@ -13,8 +13,15 @@ def create_left_prompt [] {
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($dir)"
     let ps_colour = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+    let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
+        (ansi rb)
+        " "
+        ($env.LAST_EXIT_CODE)
+        " "
+    ] | str join)
+    } else { "" }
 
-    $"(ansi green)(whoami)(ansi reset)@((sys host).hostname) ($ps_colour)"
+    $"(ansi green)(whoami)(ansi reset)@((sys host).hostname) ($ps_colour)($last_exit_code)"
 }
 
 def create_right_prompt [] {
@@ -38,7 +45,7 @@ def create_right_prompt [] {
 # Use nushell functions to define your right and left prompt
 $env.PROMPT_COMMAND = {|| create_left_prompt }
 # FIXME: This default is not implemented in rust code as of 2023-09-08.
-$env.PROMPT_COMMAND_RIGHT = {|| create_right_prompt }
+$env.PROMPT_COMMAND_RIGHT = {}
 
 # The prompt indicators are environmental variables that represent
 # the state of the prompt
