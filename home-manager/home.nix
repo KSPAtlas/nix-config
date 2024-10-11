@@ -20,12 +20,12 @@
   programs = {
     nushell = {
       enable = true;
-      extraConfig = ''
-        $env.config.show_banner = false
-      '';
+      configFile.source = dotfiles/config.nu;
+      envFile.source = dotfiles/env.nu;
     };
     carapace.enable = true;
-    starship.enable = true;
+    carapace.enableNushellIntegration = true;
+    # starship.enable = true;
     emacs.enable = true;
   };
 
