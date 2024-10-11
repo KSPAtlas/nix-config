@@ -119,10 +119,12 @@
     ".config/wofi/style.css".source = dotfiles/wofi.css;
     ".config/foot/foot.ini".source = dotfiles/foot.ini;
     ".config/foot/theme.ini".source = "${builtins.fetchGit {
-        url = "https://github.com/tinted-theming/base16-foot";
+        url = "https://github.com/tinted-theming/tinted-foot";
+        rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
     }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${builtins.fetchGit {
       url = "https://github.com/nushell/nu_scripts";
+      rev = "c05790d2fca6d39a42bb36d4bfa7442eea3f8c15";
     }}/themes/nu-themes/monokai-dark.nu";
   };
 
