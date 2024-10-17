@@ -42,6 +42,8 @@ in
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+  programs.wireshark.enable = true;
+
   # Set your time zone.
   time.timeZone = "GB";
 
@@ -68,6 +70,8 @@ in
 
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+
+  services.emacs.enable = true;
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -114,6 +118,7 @@ in
   users.users.ksp = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    shell = pkgs.nushell;
   };
 
   # List packages installed in system profile. To search, run:

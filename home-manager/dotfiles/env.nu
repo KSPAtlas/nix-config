@@ -15,13 +15,12 @@ def create_left_prompt [] {
     let ps_colour = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
         (ansi rb)
-        " "
         ($env.LAST_EXIT_CODE)
         " "
     ] | str join)
     } else { "" }
 
-    $"(ansi green)(whoami)(ansi reset)@((sys host).hostname) ($ps_colour)($last_exit_code)"
+    $"(ansi green)(whoami)(ansi reset)@((sys host).hostname) ($last_exit_code)($ps_colour)"
 }
 
 def create_right_prompt [] {

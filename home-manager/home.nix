@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+
+  nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ksp";
@@ -28,7 +30,6 @@
     zoxide.enable = true;
     zoxide.enableNushellIntegration = true;
     # starship.enable = true;
-    emacs.enable = true;
   };
 
   programs.fish.functions = {
@@ -78,8 +79,12 @@
     btop
     libreoffice-qt6
     vivid
+    unzip
 
     zls
+
+    lutris
+    wineWowPackages.stable
   ];
 
   gtk = {
@@ -122,7 +127,7 @@
         url = "https://github.com/tinted-theming/tinted-foot";
         rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
     }}/colors/base16-monokai.ini";
-    ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/themes/nu-themes/monokai-dark.nu";
+    ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
   };
 
   # Home Manager can also manage your environment variables through
