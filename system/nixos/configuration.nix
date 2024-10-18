@@ -18,6 +18,7 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvidia.nix
+      ./gtk-theme.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -135,6 +136,7 @@ in
     babelfish
     git
     lxqt.lxqt-policykit
+    orchis-theme
   ];
 
   security.polkit.enable = true;
