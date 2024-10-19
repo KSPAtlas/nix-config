@@ -137,6 +137,8 @@ in
     git
     lxqt.lxqt-policykit
     orchis-theme
+    kora-icon-theme
+    inputs.zen-browser.packages."${system}".specific
   ];
 
   security.polkit.enable = true;
