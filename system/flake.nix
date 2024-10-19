@@ -7,7 +7,7 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
-  outputs = inputs@{ self, nixpkgs, chaotic }:
+  outputs = inputs@{ self, nixpkgs, chaotic, zen-browser }:
   let system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
