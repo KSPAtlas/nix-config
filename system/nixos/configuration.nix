@@ -18,7 +18,6 @@ in
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvidia.nix
-      ./gtk-theme.nix
     ];
 
   nixpkgs.config.allowUnfree = true;
@@ -138,8 +137,12 @@ in
     lxqt.lxqt-policykit
     orchis-theme
     kora-icon-theme
-    inputs.zen-browser.packages."${system}".specific
+    inputs.zen-browser.packages."${system}".generic
   ];
+
+  environment.sessionVariables = {
+    GTK_THEME = "Orchis-Dark";
+  };
 
   security.polkit.enable = true;
 
