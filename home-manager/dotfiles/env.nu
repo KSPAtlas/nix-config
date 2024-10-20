@@ -113,7 +113,7 @@ def xkcd [
     } else { $number }
     let xkcd = (http get $"https://xkcd.com/($num)/info.0.json")
     print {title: $xkcd.title, date: ($"($xkcd.year)-($xkcd.month)-($xkcd.day)" | into datetime), num: $xkcd.num, alt: $xkcd.alt}
-    http get $xkcd.img | kitty icat --align left
+    http get $xkcd.img | img2sixel
 }
 
 # To load from a custom file you can use:

@@ -80,6 +80,7 @@
     libreoffice-qt6
     vivid
     unzip
+    libsixel
 
     zls
 
