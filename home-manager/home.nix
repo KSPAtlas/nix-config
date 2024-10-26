@@ -83,6 +83,7 @@
     libsixel
 
     zls
+    zig
 
     lutris
     wineWowPackages.stable
