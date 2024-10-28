@@ -17,14 +17,26 @@
     in {
       nixosConfigurations = {
         elitism-nix = nixpkgs.lib.nixosSystem {
-	  specialArgs = {
-	    inherit inputs;
+          specialArgs = {
+            inherit inputs;
           };
 
-	  modules = [
-	    ./nixos/configuration.nix
-	    chaotic.nixosModules.default
-	  ];
+          modules = [
+            ./nixos/hardware-configuration.nix
+            ./nixos/nvidia.nix
+            ./nixos/boot.nix
+            ./nixos/nix.nix
+            ./nixos/gui.nix
+            ./nixos/networking.nix
+            ./nixos/locale.nix
+            ./nixos/users.nix
+            ./nixos/virtualisation.nix
+            ./nixos/gaming.nix
+            ./nixos/programming.nix
+            ./nixos/printer.nix
+            ./nixos/miscpkgs.nix
+            chaotic.nixosModules.default
+          ];
         };
       };
     };
