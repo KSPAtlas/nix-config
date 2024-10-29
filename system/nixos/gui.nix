@@ -20,6 +20,7 @@ in {
       wl-clipboard
       mako
       kitty
+      foot
       wofi
       lxqt.lxqt-policykit
       orchis-theme

@@ -84,6 +84,7 @@
 
     zls
     zig
+    helix
 
     lutris
     wineWowPackages.stable
@@ -125,6 +126,7 @@
     ".config/sway/wallpaper.jpg".source = dotfiles/wallpaper.jpg;
     ".config/wofi/style.css".source = dotfiles/wofi.css;
     ".config/foot/foot.ini".source = dotfiles/foot.ini;
+    ".config/helix/config.toml".source = dotfiles/helix.toml;
     ".config/foot/theme.ini".source = "${builtins.fetchGit {
         url = "https://github.com/tinted-theming/tinted-foot";
         rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
