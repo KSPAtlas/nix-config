@@ -22,9 +22,17 @@
 
   programs.regreet.enable = true;
   
-  environment.etc."greetd/environments".text = ''
-    sway --unsupported-gpu
-  '';
+  # environment.etc."greetd/environments".text = ''
+  #   sway --unsupported-gpu
+  # '';
+
+  services.xserver.displayManager.session = [
+    {
+      manage = "desktop";
+      name = "sway-nvidia";
+      start = "sway --unsupported-gpu";
+    }
+  ];
 
   services.gnome.gnome-keyring.enable = true;
 
