@@ -3,12 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ self, nixpkgs, chaotic, zen-browser, stylix }:
+  outputs = inputs@{ self, nixpkgs, home-manager, chaotic, zen-browser, stylix }:
   let system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -39,6 +41,13 @@
             ./nixos/miscpkgs.nix
             chaotic.nixosModules.default
             stylix.nixosModules.stylix
+            home-manager.nixosModules.home-manager {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.ksp = import ./hm/ksp.nix
+              };
+            };
           ];
         };
       };
