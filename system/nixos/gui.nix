@@ -1,15 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
-let
-  greetdConfig = pkgs.writeText "greetd-sway-config" ''
-    exec ${pkgs.greetd.gtkgreet}/bin/gtkgreet -l; swaymsg exit"
-    bindsym Mod4+shift+e exec swaynag \
-      -t warning \
-      -m 'What do you want to do?' \
-      -b 'Poweroff' 'systemctl poweroff' \
-      -b 'Reboot' 'systemctl reboot'
-  '';
-in {
+{
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -29,18 +20,11 @@ in {
     ];
   };
 
-  services.greetd = {
-    enable = true;
-    settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
-  };
-
+  programs.regreet.enable = true;
+  
   environment.etc."greetd/environments".text = ''
     sway --unsupported-gpu
   '';
-
-  environment.sessionVariables = {
-    GTK_THEME = "Orchis-Dark";
-  };
 
   services.gnome.gnome-keyring.enable = true;
 

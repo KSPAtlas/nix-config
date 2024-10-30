@@ -25,11 +25,13 @@
         package = pkgs.noto-fonts-emoji;
         name = "Noto Color Emoji";
       };
+      sizes.applications = 10;
     };
 
     cursor = {
-      package = pkgs.bibata-cursor;
+      package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Classic";
+      size = 24;
     };
   };
 }

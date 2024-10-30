@@ -45,9 +45,9 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                users.ksp = import ./hm/ksp.nix
+                users.ksp = import ./hm/ksp.nix;
               };
-            };
+            }
           ];
         };
       };
