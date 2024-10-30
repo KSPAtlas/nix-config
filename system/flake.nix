@@ -5,6 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = inputs@{ self, nixpkgs, chaotic, zen-browser }:
@@ -27,6 +28,7 @@
             ./nixos/boot.nix
             ./nixos/nix.nix
             ./nixos/gui.nix
+            ./nixos/stylix.nix
             ./nixos/networking.nix
             ./nixos/locale.nix
             ./nixos/users.nix
@@ -36,6 +38,7 @@
             ./nixos/printer.nix
             ./nixos/miscpkgs.nix
             chaotic.nixosModules.default
+            stylix.nixosModules.stylix
           ];
         };
       };

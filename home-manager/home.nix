@@ -90,23 +90,23 @@
     wineWowPackages.stable
   ];
 
-  gtk = {
-    enable = true;
-    iconTheme = {
-      name = "kora";
-      package = pkgs.kora-icon-theme;
-    };
-    theme = {
-      name = "Orchis-Dark";
-      package = pkgs.orchis-theme;
-    };
-    font = {
-      name = "Inter";
-      package = pkgs.inter;
-    };
-  };
+  # gtk = {
+  #   enable = true;
+  #   iconTheme = {
+  #     name = "kora";
+  #     package = pkgs.kora-icon-theme;
+  #   };
+  #   theme = {
+  #     name = "Orchis-Dark";
+  #     package = pkgs.orchis-theme;
+  #   };
+  #   font = {
+  #     name = "Inter";
+  #     package = pkgs.inter;
+  #   };
+  # };
 
-  home.file.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic"; 
+  # home.file.".icons/default".source = "${pkgs.bibata-cursors}/share/icons/Bibata-Modern-Classic"; 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
