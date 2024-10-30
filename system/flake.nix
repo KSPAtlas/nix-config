@@ -8,7 +8,7 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ self, nixpkgs, chaotic, zen-browser }:
+  outputs = inputs@{ self, nixpkgs, chaotic, zen-browser, stylix }:
   let system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
