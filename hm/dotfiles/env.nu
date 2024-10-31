@@ -116,7 +116,7 @@ def xkcd [
     http get $xkcd.img | img2sixel
 }
 
-let nix_config_path = '~/nixcfg'
+let nix_config_path = $"($env.HOME)/nixcfg"
 
 # Rebuild the Nix system
 def "qnix r" [] {

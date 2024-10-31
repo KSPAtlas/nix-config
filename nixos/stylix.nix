@@ -5,6 +5,7 @@
     enable = true;
     image = ../assets/wallpaper.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
+    targets.regreet.enable = true; # Force enable regreet despite not using the official service
     fonts = {
       serif = {
         package = pkgs.quattrocento;
