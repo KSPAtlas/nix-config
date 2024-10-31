@@ -116,15 +116,18 @@ def xkcd [
     http get $xkcd.img | img2sixel
 }
 
-# Rebuild the system
-def "qnix b" [] {
-    nixos-rebuild switch --use-remote-sudo --flake ~/nixcfg/system
+let nix_config_path = '~/nixcfg'
+
+# Rebuild the Nix system
+def "qnix r" [] {
+    nixos-rebuild switch --use-remote-sudo --flake $nix_config_path
 }
 
-# Rebuild the system quickly for rapid iteration
+# Rebuild the Nix system quickly for iterative dev
 def "qnix f" [] {
-    nixos-rebuild switch --use-remote-sudo --fast --flake ~/nixcfg/system
+    nixos-rebuild switch --use-remote-sudo --fast --flake $nix_config_path
 }
+
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
