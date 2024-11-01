@@ -27,7 +27,7 @@ in {
   programs.regreet = {
     enable = true;
     cageArgs = [];
-  }
+  };
   
   services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
    
