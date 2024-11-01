@@ -2,7 +2,7 @@
 
 let
  greetdConfig = pkgs.writeText "greetd-sway-config" ''
-    exec ${pkgs.greetd.regreet}/bin/regreet; swaymsg exit"
+    exec ${config.programs.greetd.package}/bin/regreet; swaymsg exit"
   '';
 in {
   programs.sway = {
@@ -24,10 +24,12 @@ in {
     ];
   };
 
-  services.greetd = {
+  programs.regreet = {
     enable = true;
-    settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
-  };
+    cageArgs = [];
+  }
+  
+  services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
    
   # environment.etc."greetd/environments".text = ''
   #   sway --unsupported-gpu
