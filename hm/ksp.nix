@@ -17,8 +17,6 @@
   # release notes.
   home.stateVersion = "24.05"; # Please read the comment before changing.
 
-  programs.fish.enable = true;
-
   programs = {
     nushell = {
       enable = true;
@@ -30,26 +28,18 @@
     zoxide.enable = true;
     zoxide.enableNushellIntegration = true;
     # starship.enable = true;
+
+    fastfetch = {
+      enable = true;
+      settings = {
+        logo = {
+          type = "sixel";
+          source = ../assets/nixlogo.png;
+        };
+      };
+    };
   };
 
-  programs.fish.functions = {
-    nxos-fbld.body = ''
-    sudo nixos-rebuild switch --flake ~/nixcfg/system
-  '';
-
-  hmgr-fbld.body = "home-manager switch --flake ~/nixcfg/home-manager";
-
-  nxsh.body = ''
-    argparse c/cmd -- $argv
-    or return
-
-    if set -ql _flag_cmd
-      nix-shell -p $argv[1] --run $argv[2]
-    else
-      nix-shell -p $argv[1] --run $argv[1]
-    end
-  '';
-  };
 
   gtk.iconTheme = {
     name = "kora";
@@ -125,7 +115,6 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/fastfetch/config.jsonc".source = dotfiles/fastfetch.jsonc;
     ".config/sway/config".source = dotfiles/sway_config;
     ".config/sway/wallpaper.jpg".source = dotfiles/wallpaper.jpg;
     ".config/wofi/style.css".source = dotfiles/wofi.css;
