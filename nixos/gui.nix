@@ -1,10 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
-let
- greetdConfig = pkgs.writeText "greetd-sway-config" ''
-    exec ${config.programs.greetd.package}/bin/regreet; swaymsg exit"
-  '';
-in {
+# let
+#  greetdConfig = pkgs.writeText "greetd-sway-config" ''
+#     exec ${config.programs.regreet.package}/bin/regreet; swaymsg exit
+#     assign [all] output HDMI-A-1
+#     '';
+# in 
+{
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -26,10 +28,14 @@ in {
 
   programs.regreet = {
     enable = true;
-    cageArgs = [];
+    cageArgs = [
+      "-s"
+      "-m"
+      "last"
+    ];
   };
   
-  services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
+  # services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
    
   # environment.etc."greetd/environments".text = ''
   #   sway --unsupported-gpu
