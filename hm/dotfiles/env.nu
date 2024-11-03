@@ -13,6 +13,7 @@ def create_left_prompt [] {
     let separator_color = (if (is-admin) { ansi light_red_bold } else { ansi light_green_bold })
     let path_segment = $"($path_color)($dir)"
     let ps_colour = $path_segment | str replace --all (char path_sep) $"($separator_color)(char path_sep)($path_color)"
+    let is_nix_shell = if (($env.PATH | find /nix/store | length) != 0) { '📦 ' } else { '' }
     let last_exit_code = if ($env.LAST_EXIT_CODE != 0) {([
         (ansi rb)
         ($env.LAST_EXIT_CODE)
@@ -20,7 +21,7 @@ def create_left_prompt [] {
     ] | str join)
     } else { "" }
 
-    $"(ansi green)(whoami)(ansi reset)@((sys host).hostname) ($last_exit_code)($ps_colour)"
+    $"($is_nix_shell)(ansi green)(whoami)(ansi reset)@((sys host).hostname) ($last_exit_code)($ps_colour)"
 }
 
 def create_right_prompt [] {
@@ -128,10 +129,17 @@ def "qnix f" [] {
     nixos-rebuild switch --use-remote-sudo --fast --flake $nix_config_path
 }
 
+# List packages in a nix shell
+def "qnix ls" [] {
+    $env.PATH
+    | filter {|it| $it starts-with '/nix/store' }
+    | parse --regex '[a-z0-9]{32}-(?<package>.*)-(?<version>.*)/'
+}
+
 # To load from a custom file you can use:
 # source ($nu.default-config-dir | path join 'custom.nu')
 
-alias edit = emacsclient # emacs best editor fr
-$env.EDITOR = 'emacsclient'
+alias edit = hx # emacs best editor fr
+$env.EDITOR = 'hx'
 
 $env.LS_COLORS = (vivid generate molokai | str trim)
