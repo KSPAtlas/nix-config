@@ -27,8 +27,8 @@
 
   programs.foot = {
     enable = true;
-  }
-
+  };
+  
   programs.regreet = {
     enable = true;
     cageArgs = [
