@@ -36,10 +36,12 @@
       "-m"
       "last"
     ];
+    theme = lib.mkForce {
+      package = pkgs.orchis-theme;
+      name = "Orchis-Dark";
+    };
     settings = {
       background.fit = "Fill";
-      theme_name = "Orchis-Dark";
-      icon_theme_name = "kora";
     };
   };
   
