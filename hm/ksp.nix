@@ -71,6 +71,8 @@
         ];
       };
     };
+
+    rofi.enable = true;
   };
 
 

@@ -40,11 +40,24 @@
       package = pkgs.orchis-theme;
       name = "Orchis-Dark";
     };
+    iconTheme = {
+      package = pkgs.kora-icon-theme;
+      name = "kora";
+    };
+    font.size = 12;
     settings = {
       background.fit = "Fill";
+      appearance.greeting_msg = "Nixing my OS";
     };
   };
   
+  services.greetd.settings.default_session.command = let
+    leftmonitor = "DP-1";
+    rightmonitor = "HDMI-A-1";
+    runcommand = "sh -c \"${lib.getExe pkgs.wlr-randr} --output ${rightmonitor} --on --output ${leftmonitor} --off; exec ${lib.getExe config.programs.regreet.package}\"";
+  in ''
+    ${pkgs.dbus}/bin/dbus-run-session ${lib.getExe pkgs.cage} ${lib.escapeShellArgs config.programs.regreet.cageArgs} -- ${runcommand}
+  '';  
   # services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
    
   # environment.etc."greetd/environments".text = ''
