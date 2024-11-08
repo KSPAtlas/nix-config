@@ -29,6 +29,8 @@
     zoxide.enableNushellIntegration = true;
     # starship.enable = true;
 
+    foot.enable = true;
+
     fastfetch = {
       enable = true;
       settings = {
@@ -149,7 +151,7 @@
     ".config/sway/config".source = dotfiles/sway_config;
     ".config/sway/wallpaper.jpg".source = dotfiles/wallpaper.jpg;
     ".config/wofi/style.css".source = dotfiles/wofi.css;
-    ".config/foot/foot.ini".source = dotfiles/foot.ini;
+    # ".config/foot/foot.ini".source = dotfiles/foot.ini;
     ".config/helix/config.toml".source = dotfiles/helix.toml;
     # ".config/foot/theme.ini".source = "${builtins.fetchGit {
     #     url = "https://github.com/tinted-theming/tinted-foot";

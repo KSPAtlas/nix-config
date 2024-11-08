@@ -25,9 +25,9 @@
     ];
   };
 
-  programs.foot = {
-    enable = true;
-  };
+  # programs.foot = {
+  #   enable = true;
+  # };
   
   programs.regreet = {
     enable = true;
@@ -36,6 +36,11 @@
       "-m"
       "last"
     ];
+    settings = {
+      background.fit = "Fill";
+      theme_name = "Orchis-Dark";
+      icon_theme_name = "kora";
+    };
   };
   
   # services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
