@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
@@ -151,10 +151,10 @@
     ".config/wofi/style.css".source = dotfiles/wofi.css;
     ".config/foot/foot.ini".source = dotfiles/foot.ini;
     ".config/helix/config.toml".source = dotfiles/helix.toml;
-    ".config/foot/theme.ini".source = "${builtins.fetchGit {
-        url = "https://github.com/tinted-theming/tinted-foot";
-        rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
-    }}/colors/base16-monokai.ini";
+    # ".config/foot/theme.ini".source = "${builtins.fetchGit {
+    #     url = "https://github.com/tinted-theming/tinted-foot";
+    #     rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
+    # }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
   };
 

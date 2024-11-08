@@ -17,7 +17,6 @@
       wl-clipboard
       mako
       kitty
-      foot
       wofi
       lxqt.lxqt-policykit
       orchis-theme
@@ -25,6 +24,10 @@
       inputs.zen-browser.packages."${system}".generic
     ];
   };
+
+  programs.foot = {
+    enable = true;
+  }
 
   programs.regreet = {
     enable = true;

@@ -15,7 +15,7 @@
       pkgs = import nixpkgs {
         inherit system;
 
-	config.allowUnfree = true; # Allow using unfree software like NVIDIA drivers or Steam
+      	config.allowUnfree = true; # Allow using unfree software like NVIDIA drivers or Steam
       };
     in {
       nixosConfigurations = {
