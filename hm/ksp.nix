@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
 
@@ -75,6 +75,7 @@
     helix = {
       enable = true;
       settings = {
+        theme = lib.mkForce "monokai";
         editor.cursor-shape = {
           insert = "bar";
           normal = "block";
