@@ -72,7 +72,27 @@
       };
     };
 
-    rofi.enable = true;
+    helix = {
+      enable = true;
+      settings = {
+        editor.cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
+
+        keys.insert = {          
+          up = "no_op";
+          down = "no_op";
+          left = "no_op";
+          right = "no_op";
+          pageup = "no_op";
+          pagedown = "no_op";
+          home = "no_op";
+          end = "no_op";
+        };
+      }; 
+    };
   };
 
 
@@ -110,10 +130,11 @@
     vivid
     unzip
     libsixel
+    xfce.thunar
+    qbittorrent
 
     zls
     zig
-    helix
 
     lutris
     wineWowPackages.stable
