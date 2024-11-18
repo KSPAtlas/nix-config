@@ -110,6 +110,12 @@
     name = "kora";
     package = pkgs.kora-icon-theme;
   };
+
+  qt = {
+    enable = true;
+    style.name = "adwaita-dark";
+  };
+  
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
@@ -142,6 +148,7 @@
     libsixel
     xfce.thunar
     qbittorrent
+    imv
 
     zls
     zig
