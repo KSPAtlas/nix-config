@@ -21,9 +21,13 @@
       lxqt.lxqt-policykit
       orchis-theme
       kora-icon-theme
-      inputs.zen-browser.packages."${system}".generic
     ];
   };
+
+  environment.systemPackages = with pkgs; [
+    inputs.zen-browser.packages."${system}".generic
+    inputs.wezterm.packages.${pkgs.system}.default
+  ];
 
   # programs.foot = {
   #   enable = true;

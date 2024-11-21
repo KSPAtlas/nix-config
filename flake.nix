@@ -8,6 +8,7 @@
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix.url = "github:danth/stylix";
+    wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, chaotic, zen-browser, stylix }:
