@@ -189,7 +189,7 @@
     #   org.gradle.daemon.idletimeout=3600000
     # '';
     ".config/sway/config".source = dotfiles/sway_config;
-    ".config/sway/wallpaper.jpg".source = dotfiles/wallpaper.jpg;
+    ".config/sway/wallpaper.jpg".source = ../assets/wallpaper.jpg;
     ".config/wofi/style.css".source = dotfiles/wofi.css;
     # ".config/foot/foot.ini".source = dotfiles/foot.ini;
     # ".config/foot/theme.ini".source = "${builtins.fetchGit {

@@ -11,7 +11,7 @@
     wezterm.url = "github:wez/wezterm?dir=nix";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, chaotic, zen-browser, stylix }:
+  outputs = inputs@{ self, nixpkgs, home-manager, chaotic, zen-browser, stylix, wezterm }:
   let system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
