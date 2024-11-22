@@ -197,6 +197,7 @@
     #     rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
     # }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
+    ".wezterm.lua".source = dotfiles/wezterm.lua;
   };
 
   # Yes, an entire derivation for terminfo
