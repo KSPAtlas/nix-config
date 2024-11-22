@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.emacs.enable = true;
+  # services.emacs.enable = true;
 }

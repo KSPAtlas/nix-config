@@ -199,6 +199,21 @@
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
   };
 
+  # Yes, an entire derivation for terminfo
+  home.file.".terminfo".source = let wezterm-terminfo = pkgs.stdenv.mkDerivation {
+    name = "wezterm-terminfo";
+    src = pkgs.fetchFromGitHub {
+      owner = "wez";
+      repo = "wezterm";
+      rev = "4050072da21cc3106d0985281d75978c07e22abc";
+      hash = "sha256-8lv1bc7Lw5S7UFOduShwSHfBzB4Vl0ex22Cb+q/qLi0=";
+    };
+
+    buildInputs = [ pkgs.ncurses ];
+    buildPhase = "tic -x -o terminfo termwiz/data/wezterm.terminfo";
+    installPhase = "cp -r terminfo $out/";
+  }; in "${wezterm-terminfo}";
+
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
