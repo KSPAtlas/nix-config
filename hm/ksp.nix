@@ -92,6 +92,15 @@
           home = "no_op";
           end = "no_op";
         };
+      };
+
+      languages = {
+        language = [{
+          name = "nix";
+          language-servers = [ "nixd" "nil" ];
+        }];
+
+        language-server.nixd.command = "nixd";
       }; 
     };
   };
@@ -151,6 +160,7 @@
     imv
 
     zls
+    nixd
     zig
 
     lutris
