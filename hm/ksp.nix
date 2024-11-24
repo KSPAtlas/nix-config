@@ -35,7 +35,7 @@
       enable = true;
       settings = {
         logo = {
-          type = "sixel";
+          type = "iterm";
           source = ../assets/nixlogo.png;
         };
         modules = [

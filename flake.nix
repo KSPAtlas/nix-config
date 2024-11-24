@@ -9,9 +9,10 @@
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
+    drawterm.url = "github:KSPAtlas/drawterm-flake";
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, chaotic, zen-browser, stylix, wezterm }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
@@ -40,8 +41,8 @@
             ./nixos/programming.nix
             ./nixos/printer.nix
             ./nixos/miscpkgs.nix
-            chaotic.nixosModules.default
-            stylix.nixosModules.stylix
+            inputs.chaotic.nixosModules.default
+            inputs.stylix.nixosModules.stylix
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;

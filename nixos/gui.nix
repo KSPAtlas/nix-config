@@ -26,7 +26,8 @@
 
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".generic
-    inputs.wezterm.packages.${pkgs.system}.default
+    inputs.wezterm.packages."${pkgs.system}".default
+    inputs.drawterm.packages."${pkgs.system}".default
   ];
 
   # programs.foot = {
