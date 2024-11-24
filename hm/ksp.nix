@@ -95,12 +95,21 @@
       };
 
       languages = {
-        language = [{
-          name = "nix";
-          language-servers = [ "nixd" "nil" ];
-        }];
+        language = [
+          {
+            name = "nix";
+            language-servers = [ "nixd" "nil" ];
+          }
+          {
+            name = "scheme";
+            language-servers = [ "scheme-langserver" ];
+          }
+        ];
 
-        language-server.nixd.command = "nixd";
+        language-server = {
+          nixd.command = "nixd";
+          scheme-langserver.command = "scheme-langserver";
+        };
       }; 
     };
   };
@@ -161,8 +170,9 @@
 
     zls
     nixd
-    zig
+    akkuPackages.scheme-langserver
 
+    zig
     lutris
     wineWowPackages.stable
   ];
