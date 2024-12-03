@@ -74,8 +74,32 @@
 
     helix = {
       enable = true;
+      themes = {
+        monokai-plus = {
+          inherits = "monokai";
+          type = {
+            modifiers = ["italic"];
+            fg = "type";
+          };
+          comment = {
+            modifiers = ["italic"];
+            fg = "#88846F";
+          };
+
+          "type.builtin" = {
+            modifiers = ["italic"];
+            fg = "#66D9EF";
+          };
+
+          "variable.parameter" = {
+            modifiers = ["italic"];
+            fg = "#FD971F";
+          };
+        };
+      };
       settings = {
-        theme = lib.mkForce "monokai";
+        theme = lib.mkForce "monokai-plus";
+
         editor.cursor-shape = {
           insert = "bar";
           normal = "block";
@@ -171,7 +195,9 @@
     zls
     nixd
     akkuPackages.scheme-langserver
+    python312Packages.python-lsp-server
 
+    python312Full
     zig
     lutris
     wineWowPackages.stable
