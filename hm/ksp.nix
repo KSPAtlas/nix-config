@@ -47,7 +47,7 @@
           "uptime"
           "packages"
           "shell"
-          # "display"
+          "display"
           "de"
           "wm"
           "wmtheme"
@@ -196,6 +196,8 @@
     nixd
     akkuPackages.scheme-langserver
     python312Packages.python-lsp-server
+    haskell-language-server
+    ghc
 
     python312Full
     zig

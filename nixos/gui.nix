@@ -30,6 +30,12 @@
     inputs.drawterm.packages."${pkgs.system}".default
   ];
 
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
+    style = "kvantum";
+  };
+
   # programs.foot = {
   #   enable = true;
   # };

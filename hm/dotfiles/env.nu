@@ -143,3 +143,4 @@ alias edit = hx # emacs best editor fr
 $env.EDITOR = 'hx'
 
 $env.LS_COLORS = (vivid generate molokai | str trim)
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
