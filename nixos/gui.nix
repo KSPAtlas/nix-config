@@ -11,6 +11,9 @@
     enable = true;
     wrapperFeatures.gtk = true;
     package = inputs.chaotic.packages.${pkgs.system}.sway_git;
+    extraOptions = [
+      "--unsupported-gpu"
+    ];
     extraPackages = with pkgs; [
       grim
       slurp
@@ -25,7 +28,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".generic
+    inputs.zen-browser.packages."${system}".default
     inputs.wezterm.packages."${pkgs.system}".default
     inputs.drawterm.packages."${pkgs.system}".default
   ];
@@ -42,11 +45,11 @@
   
   programs.regreet = {
     enable = true;
-    cageArgs = [
-      "-s"
-      "-m"
-      "last"
-    ];
+    # cageArgs = [
+    #   "-s"
+    #   "-m"
+    #   "last"
+    # ];
     theme = lib.mkForce {
       package = pkgs.orchis-theme;
       name = "Orchis-Dark";
@@ -57,7 +60,7 @@
     };
     font.size = 12;
     settings = {
-      background.fit = "Fill";
+      background.fit = lib.mkForce "Fill";
       appearance.greeting_msg = "Nixing my OS";
     };
   };
@@ -75,13 +78,13 @@
   #   sway --unsupported-gpu
   # '';
 
-  services.xserver.displayManager.session = [
-    {
-      manage = "desktop";
-      name = "sway-nvidia";
-      start = "sway --unsupported-gpu";
-    }
-  ];
+  # services.xserver.displayManager.session = [
+  #   {
+  #     manage = "desktop";
+  #     name = "sway-nvidia";
+  #     start = "sway --unsupported-gpu";
+  #   }
+  # ];
 
   services.gnome.gnome-keyring.enable = true;
 

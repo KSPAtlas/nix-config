@@ -29,7 +29,11 @@
     zoxide.enableNushellIntegration = true;
     # starship.enable = true;
 
-    foot.enable = true;
+    direnv = {
+      enable = true;
+      enableNushellIntegration = true;
+      nix-direnv.enable = true;
+    };
 
     fastfetch = {
       enable = true;
@@ -178,7 +182,7 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     fastfetch
-    floorp
+    lagrange
     thunderbird
     vesktop
     ripgrep
@@ -189,6 +193,7 @@
     unzip
     libsixel
     xfce.thunar
+    xfce.thunar-archive-plugin
     qbittorrent
     imv
 
