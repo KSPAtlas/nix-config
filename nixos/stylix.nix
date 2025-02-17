@@ -5,6 +5,8 @@
     enable = true;
     image = ../assets/wallpaper.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
+    targets.gtk.enable = false;
+    
     fonts = {
       serif = {
         package = pkgs.quattrocento;

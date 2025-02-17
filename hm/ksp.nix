@@ -2,7 +2,6 @@
 
 {
 
-  nixpkgs.config.allowUnfree = true;
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "ksp";
@@ -20,8 +19,8 @@
   programs = {
     nushell = {
       enable = true;
-      configFile.source = dotfiles/config.nu;
-      envFile.source = dotfiles/env.nu;
+      configFile.source = ../dotfiles/config.nu;
+      envFile.source = ../dotfiles/env.nu;
     };
     carapace.enable = true;
     carapace.enableNushellIntegration = true;
@@ -157,10 +156,10 @@
     package = pkgs.kora-icon-theme;
   };
 
-  qt = {
-    enable = true;
-    style.name = "adwaita-dark";
-  };
+  # qt = {
+  #   enable = true;
+  #   style.name = "adwaita-dark";
+  # };
   
   # The home.packages option allows you to install Nix packages into your
   # environment.
@@ -196,13 +195,17 @@
     xfce.thunar-archive-plugin
     qbittorrent
     imv
+    prismlauncher
 
     zls
     nixd
     akkuPackages.scheme-langserver
     python312Packages.python-lsp-server
     haskell-language-server
+    haskellPackages.cabal-gild
     ghc
+    racket
+    vscodium
 
     python312Full
     zig
@@ -241,16 +244,16 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
-    ".config/sway/config".source = dotfiles/sway_config;
+    ".config/sway/config".source = ../dotfiles/sway_config;
     ".config/sway/wallpaper.jpg".source = ../assets/wallpaper.jpg;
-    ".config/wofi/style.css".source = dotfiles/wofi.css;
+    ".config/wofi/style.css".source = ../dotfiles/wofi.css;
     # ".config/foot/foot.ini".source = dotfiles/foot.ini;
     # ".config/foot/theme.ini".source = "${builtins.fetchGit {
     #     url = "https://github.com/tinted-theming/tinted-foot";
     #     rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
     # }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
-    ".wezterm.lua".source = dotfiles/wezterm.lua;
+    ".wezterm.lua".source = ../dotfiles/wezterm.lua;
   };
 
   # Yes, an entire derivation for terminfo

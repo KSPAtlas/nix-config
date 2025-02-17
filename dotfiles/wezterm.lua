@@ -8,7 +8,7 @@ local config = wezterm.config_builder()
 
 -- For example, changing the color scheme:
 config.color_scheme = 'Monokai (base16)'
-config.font_size = 11.0
+config.font_size = 12.0
 config.tab_bar_at_bottom = true
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
@@ -20,6 +20,8 @@ config.window_padding = {
 }
 
 config.term = "wezterm"
+
+-- config.font = wezterm.font "Fairfax Hax HD"
 
 -- and finally, return the configuration to wezterm
 return config

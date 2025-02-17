@@ -27,17 +27,21 @@
     ];
   };
 
+  services.gvfs.enable = true;
+
+  services.desktopManager.cosmic.enable = true;
+
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
     inputs.wezterm.packages."${pkgs.system}".default
     inputs.drawterm.packages."${pkgs.system}".default
   ];
 
-  qt = {
-    enable = true;
-    platformTheme = "qt5ct";
-    style = "kvantum";
-  };
+  # qt = {
+  #   enable = true;
+  #   platformTheme = "qt5ct";
+  #   style = lib.mkForce "kvantum";
+  # };
 
   # programs.foot = {
   #   enable = true;
@@ -65,13 +69,11 @@
     };
   };
   
-  services.greetd.settings.default_session.command = let
-    leftmonitor = "DP-1";
-    rightmonitor = "HDMI-A-1";
-    runcommand = "sh -c \"${lib.getExe pkgs.wlr-randr} --output ${rightmonitor} --on --output ${leftmonitor} --off; exec ${lib.getExe config.programs.regreet.package}\"";
-  in ''
-    ${pkgs.dbus}/bin/dbus-run-session ${lib.getExe pkgs.cage} ${lib.escapeShellArgs config.programs.regreet.cageArgs} -- ${runcommand}
-  '';  
+  # services.greetd.settings.default_session.command = let
+  #   runcommand = "${lib.getExe config.programs.regreet.package}";
+  # in ''
+  #   ${pkgs.dbus}/bin/dbus-run-session ${lib.getExe pkgs.cage} ${lib.escapeShellArgs config.programs.regreet.cageArgs} -- ${runcommand}
+  # '';  
   # services.greetd.settings.default_session.command = "${inputs.chaotic.packages.${pkgs.system}.sway_git}/bin/sway --unsupported-gpu --config ${greetdConfig}";
    
   # environment.etc."greetd/environments".text = ''

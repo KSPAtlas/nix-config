@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.follows = "nixos-cosmic/nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
@@ -10,6 +11,7 @@
     stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
     drawterm.url = "github:KSPAtlas/drawterm-flake";
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -27,6 +29,12 @@
           };
 
           modules = [
+            {
+              nix.settings = {
+                substituters = [ "https://cosmic.cachix.org/" ];
+                trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
+              };
+            }
             ./nixos/hardware-configuration.nix
             ./nixos/nvidia.nix
             ./nixos/boot.nix
@@ -43,6 +51,7 @@
             ./nixos/miscpkgs.nix
             inputs.chaotic.nixosModules.default
             inputs.stylix.nixosModules.stylix
+            inputs.nixos-cosmic.nixosModules.default
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;
