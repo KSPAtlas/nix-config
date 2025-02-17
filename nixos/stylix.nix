@@ -3,6 +3,7 @@
 {
   stylix = {
     enable = true;
+    homeManagerIntegration.autoImport = lib.mkForce false;
     image = ../assets/wallpaper.jpg;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/monokai.yaml";
     targets.gtk.enable = false;
