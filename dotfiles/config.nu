@@ -4,6 +4,6 @@ source theme.nu
 $env.config.history.file_format = "sqlite"
 
 $env.config.show_banner = false
-$env.config.buffer_editor = "emacs"
+$env.config.buffer_editor = "hx"
 
 $env.config.cursor_shape.emacs = "line"
