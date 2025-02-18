@@ -3,6 +3,7 @@
 let passthrough_guests = [ 'bazzite' ]
 let display_manager = 'greetd'
 let pci_devices = [
+  'pci_0000_00_01_0' # PCI root port
   'pci_0000_01_00_0' # GPU
   'pci_0000_01_00_1' # HDMI audio
 ]
