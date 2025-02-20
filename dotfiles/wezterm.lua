@@ -9,9 +9,11 @@ local config = wezterm.config_builder()
 -- For example, changing the color scheme:
 config.color_scheme = 'Monokai (base16)'
 config.font_size = 12.0
-config.tab_bar_at_bottom = true
-config.use_fancy_tab_bar = false
-config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = false
+config.use_fancy_tab_bar = true
+config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
+config.integrated_title_button_style = "Gnome"
+config.hide_tab_bar_if_only_one_tab = false
 config.window_padding = {
   left = '5px',
   right = '5px',

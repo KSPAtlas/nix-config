@@ -151,10 +151,10 @@
   #   };
   # };
   
-  gtk.iconTheme = {
-    name = "kora";
-    package = pkgs.kora-icon-theme;
-  };
+  # gtk.iconTheme = {
+  #   name = "kora";
+  #   package = pkgs.kora-icon-theme;
+  # };
 
   # qt = {
   #   enable = true;

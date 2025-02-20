@@ -8,7 +8,6 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    stylix.url = "github:danth/stylix";
     wezterm.url = "github:wez/wezterm?dir=nix";
     drawterm.url = "github:KSPAtlas/drawterm-flake";
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
@@ -46,7 +45,7 @@
             ./nixos/boot.nix
             ./nixos/nix.nix
             ./nixos/gui.nix
-            ./nixos/stylix.nix
+            # ./nixos/stylix.nix
             ./nixos/networking.nix
             ./nixos/locale.nix
             ./nixos/users.nix
@@ -57,7 +56,6 @@
             ./nixos/miscpkgs.nix
             ./nixos/gpupassthrough.nix
             inputs.chaotic.nixosModules.default
-            inputs.stylix.nixosModules.stylix
             inputs.nixos-cosmic.nixosModules.default
             home-manager.nixosModules.home-manager {
               home-manager = {

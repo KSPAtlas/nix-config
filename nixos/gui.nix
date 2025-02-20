@@ -31,10 +31,19 @@
 
   services.desktopManager.cosmic.enable = true;
 
+  # Despite the name, this is wayland stuff
+  services.xserver = {
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${system}".default
     inputs.wezterm.packages."${pkgs.system}".default
     inputs.drawterm.packages."${pkgs.system}".default
+
+    gnomeExtensions.blur-my-shell
+    gnomeExtensions.gsconnect
   ];
 
   # qt = {
@@ -47,27 +56,28 @@
   #   enable = true;
   # };
   
-  programs.regreet = {
-    enable = true;
-    # cageArgs = [
-    #   "-s"
-    #   "-m"
-    #   "last"
-    # ];
-    theme = lib.mkForce {
-      package = pkgs.orchis-theme;
-      name = "Orchis-Dark";
-    };
-    iconTheme = {
-      package = pkgs.kora-icon-theme;
-      name = "kora";
-    };
-    font.size = 12;
-    settings = {
-      background.fit = lib.mkForce "Fill";
-      appearance.greeting_msg = "Nixing my OS";
-    };
-  };
+  # Using GDM right now
+  # programs.regreet = {
+  #   enable = true;
+  #   # cageArgs = [
+  #   #   "-s"
+  #   #   "-m"
+  #   #   "last"
+  #   # ];
+  #   theme = lib.mkForce {
+  #     package = pkgs.orchis-theme;
+  #     name = "Orchis-Dark";
+  #   };
+  #   iconTheme = {
+  #     package = pkgs.kora-icon-theme;
+  #     name = "kora";
+  #   };
+  #   font.size = 12;
+  #   settings = {
+  #     background.fit = lib.mkForce "Fill";
+  #     appearance.greeting_msg = "Nixing my OS";
+  #   };
+  # };
   
   # services.greetd.settings.default_session.command = let
   #   runcommand = "${lib.getExe config.programs.regreet.package}";
