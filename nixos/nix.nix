@@ -25,7 +25,13 @@
   #   ];
   # };
 
-  programs.nix-ld.enable = true;
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      libunwind
+      libcxx
+    ];
+  };
 
   system.stateVersion = "24.05";
 }

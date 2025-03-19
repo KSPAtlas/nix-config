@@ -2,9 +2,15 @@
 
 {
   boot = {
-    loader.systemd-boot.enable = true;
     loader.efi.canTouchEfiVariables = true;
-    loader.systemd-boot.configurationLimit = 8;
+    loader.timeout = 0;
+    loader.systemd-boot = {
+      enable = true;
+      configurationLimit = 8;
+      edk2-uefi-shell.enable = true;
+      memtest86.enable = true;
+      netbootxyz.enable = true;
+    };
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "intel_iommu=on"

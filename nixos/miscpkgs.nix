@@ -6,4 +6,6 @@
     curl
     git
   ];
+
+  services.flatpak.enable = true;
 }

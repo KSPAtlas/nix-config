@@ -38,13 +38,15 @@
   };
 
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages."${system}".twilight-official
     inputs.wezterm.packages."${pkgs.system}".default
     inputs.drawterm.packages."${pkgs.system}".default
 
     gnomeExtensions.blur-my-shell
     gnomeExtensions.gsconnect
+    gnomeExtensions.appindicator
   ];
+
 
   # qt = {
   #   enable = true;

@@ -10,4 +10,8 @@
     enable = true;
     capSysNice = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    temurin-jre-bin-17
+  ];
 }

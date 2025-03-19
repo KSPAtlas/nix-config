@@ -211,6 +211,9 @@
     zig
     lutris
     wineWowPackages.stable
+    ckan
+    krita
+    jdk23
   ];
 
   # gtk = {

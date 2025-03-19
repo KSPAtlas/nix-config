@@ -93,6 +93,18 @@ def "qnix ls" [] {
     | parse --regex '[a-z0-9]{32}-(?<package>.*)-(?<version>.*)/'
 }
 
+# Find the package that an executable comes from
+def "qnix source" [
+    app: string # A program to find
+    ...apps: string # Any additional programs to find
+] {
+    which $app ...$apps # Find the paths of the executables
+    | where type == 'external' # Only external programs count, otherwise they don't have paths
+    | each {|it| readlink -f $it.path } # Get the real nix store path
+    | filter {|it| $it starts-with '/nix/store' } # Only count executables that are actually in the nix store
+    | parse -r '[a-z0-9]{32}-(?<package>[^0-9]*)-(?<version>.[^/]*)' # Extract the names and versions of the packages
+}
+
 alias edit = hx
 $env.EDITOR = 'hx'
 
