@@ -7,44 +7,53 @@
 #     '';
 # in 
 {
-  programs.sway = {
-    enable = true;
-    wrapperFeatures.gtk = true;
-    package = inputs.chaotic.packages.${pkgs.system}.sway_git;
-    extraOptions = [
-      "--unsupported-gpu"
-    ];
-    extraPackages = with pkgs; [
-      grim
-      slurp
-      wl-clipboard
-      mako
-      kitty
-      wofi
-      lxqt.lxqt-policykit
-      orchis-theme
-      kora-icon-theme
-    ];
-  };
+  # programs.sway = {
+  #   enable = true;
+  #   wrapperFeatures.gtk = true;
+  #   package = inputs.chaotic.packages.${pkgs.system}.sway_git;
+  #   extraOptions = [
+  #     "--unsupported-gpu"
+  #   ];
+  #   extraPackages = with pkgs; [
+  #     grim
+  #     slurp
+  #     wl-clipboard
+  #     mako
+  #     kitty
+  #     wofi
+  #     lxqt.lxqt-policykit
+  #     orchis-theme
+  #     kora-icon-theme
+  #   ];
+  # };
 
-  services.gvfs.enable = true;
+  # services.gvfs.enable = true;
 
-  services.desktopManager.cosmic.enable = true;
+  # services.desktopManager.cosmic.enable = true;
 
   # Despite the name, this is wayland stuff
-  services.xserver = {
-    displayManager.gdm.enable = true;
-    desktopManager.gnome.enable = true;
+  # Gnome disabled
+  # services.xserver = {
+  #   displayManager.gdm.enable = true;
+  #   desktopManager.gnome.enable = true;
+  # };
+
+  # KDE
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
   };
+  services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".twilight-official
-    inputs.wezterm.packages."${pkgs.system}".default
+    inputs.zen-browser.packages."${system}".twilight
+    # inputs.wezterm.packages."${pkgs.system}".default
     inputs.drawterm.packages."${pkgs.system}".default
+    wezterm
 
-    gnomeExtensions.blur-my-shell
-    gnomeExtensions.gsconnect
-    gnomeExtensions.appindicator
+    # gnomeExtensions.blur-my-shell
+    # gnomeExtensions.gsconnect
+    # gnomeExtensions.appindicator
   ];
 
 
@@ -100,7 +109,7 @@
   #   }
   # ];
 
-  services.gnome.gnome-keyring.enable = true;
+  # services.gnome.gnome-keyring.enable = true;
 
   # Sound isn't technically GUI, but if I'm using one I'm using the other
   services.pipewire = {

@@ -5,6 +5,7 @@
     neovim
     curl
     git
+    appimage-run
   ];
 
   services.flatpak.enable = true;

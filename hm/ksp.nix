@@ -196,6 +196,7 @@
     qbittorrent
     imv
     prismlauncher
+    mpv
 
     zls
     nixd
