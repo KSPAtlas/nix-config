@@ -78,18 +78,18 @@ let nix_config_path = $"($env.HOME)/nixcfg"
 
 # Rebuild the Nix system
 def "qnix r" [] {
-    nixos-rebuild switch --use-remote-sudo --flake $nix_config_path
+    nixos-rebuild switch --sudo --flake $nix_config_path
 }
 
 # Rebuild the Nix system quickly for iterative dev
 def "qnix f" [] {
-    nixos-rebuild switch --use-remote-sudo --fast --flake $nix_config_path
+    nixos-rebuild switch --sudo --fast --flake $nix_config_path
 }
 
 # List packages in a nix shell
 def "qnix ls" [] {
     $env.PATH
-    | filter {|it| $it starts-with '/nix/store' }
+    | where {|it| $it starts-with '/nix/store' }
     | parse --regex '[a-z0-9]{32}-(?<package>.*)-(?<version>.*)/'
 }
 
@@ -101,7 +101,7 @@ def "qnix source" [
     which $app ...$apps # Find the paths of the executables
     | where type == 'external' # Only external programs count, otherwise they don't have paths
     | each {|it| readlink -f $it.path } # Get the real nix store path
-    | filter {|it| $it starts-with '/nix/store' } # Only count executables that are actually in the nix store
+    | where {|it| $it starts-with '/nix/store' } # Only count executables that are actually in the nix store
     | parse -r '[a-z0-9]{32}-(?<package>[^0-9]*)-(?<version>.[^/]*)' # Extract the names and versions of the packages
 }
 

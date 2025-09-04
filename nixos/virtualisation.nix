@@ -3,6 +3,7 @@
 {
   virtualisation.libvirtd.enable = true;
   programs.virt-manager.enable = true;
+  networking.firewall.trustedInterfaces = [ "virbr0" ];
 
   virtualisation.podman = {
     enable = true;
@@ -12,4 +13,10 @@
   environment.systemPackages = with pkgs; [
     distrobox
   ];
+
+  environment.etc = {
+    "libvirt/network.conf".text = ''
+      firewall_backend = "iptables"
+    '';
+  };
 }

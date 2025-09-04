@@ -195,8 +195,11 @@
     xfce.thunar-archive-plugin
     qbittorrent
     imv
+    # prismlauncher - removed due to build error
     prismlauncher
     mpv
+    vlc
+    anki
 
     zls
     nixd
@@ -207,6 +210,7 @@
     ghc
     racket
     vscodium
+    obsidian
 
     python312Full
     zig
@@ -258,6 +262,7 @@
     # }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
     ".wezterm.lua".source = ../dotfiles/wezterm.lua;
+    ".config/emacs/init.el".source = ../dotfiles/init.el;
   };
 
   # Yes, an entire derivation for terminfo
