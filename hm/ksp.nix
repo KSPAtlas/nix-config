@@ -212,7 +212,7 @@
     vscodium
     obsidian
 
-    python312Full
+    python314
     zig
     lutris
     wineWowPackages.stable
@@ -262,7 +262,7 @@
     # }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
     ".wezterm.lua".source = ../dotfiles/wezterm.lua;
-    ".config/emacs/init.el".source = ../dotfiles/init.el;
+    ".emacs".source = ../dotfiles/init.el;
   };
 
   # Yes, an entire derivation for terminfo

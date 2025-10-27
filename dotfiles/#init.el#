@@ -7,7 +7,7 @@
 (scroll-bar-mode -1)
 
 ;; Enable theme & font
-(load-theme 'doom-molokai t)
+(load-theme 'monokai t)
 (set-face-attribute 'default t :font "Jetbrains Mono" :height 120)
 
 ;; Set up Lispy
@@ -17,4 +17,5 @@
 
 ;; Load Doom-Modeline and evil-mode
 (evil-mode 1)
-(doom-modeline-mode 1)
+(doom-modeline 1)
+

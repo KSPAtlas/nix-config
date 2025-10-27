@@ -7,6 +7,8 @@
     "flakes"
   ];
 
+  nix.package = pkgs.lixPackageSets.latest.lix;
+
   nix.settings.auto-optimise-store = true;
 
   nix.gc = {
