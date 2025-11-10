@@ -141,6 +141,11 @@
     };
   };
 
+  # Noctalia Shell
+  programs.noctalia-shell = {
+    enable = true;
+    settings.general.avatarImage = ../assets/face.png;
+  };
 
   # wayland.windowManager.sway = {
   #   enable = true;
@@ -263,6 +268,7 @@
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
     ".wezterm.lua".source = ../dotfiles/wezterm.lua;
     ".emacs".source = ../dotfiles/init.el;
+    ".config/niri/config.kdl".source = ../dotfiles/niri.kdl;
   };
 
   # Yes, an entire derivation for terminfo
@@ -298,6 +304,10 @@
   #
   home.sessionVariables = {
     GRIM_DEFAULT_DIR = /home/ksp/Pictures/Grim;
+
+    # Needed for KDE things
+    XDG_DATA_DIRS = "$HOME/kde/usr/share:$XDG_DATA_DIRS";
+    QT_PLUGIN_PATH = "$HOME/kde/usr/lib/plugins:$QT_PLUGIN_PATH";
   };
 
   # Let Home Manager install and manage itself.

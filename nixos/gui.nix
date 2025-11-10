@@ -51,11 +51,17 @@
     inputs.drawterm.packages."${pkgs.system}".default
     wezterm
 
+    # fuzzel
+    # waybar
+    inputs.noctalia.packages."${system}".default
+
     # gnomeExtensions.blur-my-shell
     # gnomeExtensions.gsconnect
     # gnomeExtensions.appindicator
   ];
 
+  # Niri
+  programs.niri.enable = true;
 
   # qt = {
   #   enable = true;

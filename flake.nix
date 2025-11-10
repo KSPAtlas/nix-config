@@ -11,6 +11,19 @@
     # wezterm.url = "github:wez/wezterm?dir=nix";
     drawterm.url = "github:KSPAtlas/drawterm-flake";
     # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+
+    # For Noctalia
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        quickshell.follows = "quickshell";
+      };
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -57,6 +70,7 @@
             ./nixos/gpupassthrough.nix
             inputs.chaotic.nixosModules.default
             # inputs.nixos-cosmic.nixosModules.default
+            inputs.noctalia.homeModules.default
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;
