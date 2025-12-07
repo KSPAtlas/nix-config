@@ -1,6 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
+  # imports = [
+  #   inputs.noctalia.homeModules.default
+  # ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -38,7 +41,7 @@
       enable = true;
       settings = {
         logo = {
-          type = "iterm";
+          type = "sixel";
           source = ../assets/nixlogo.png;
         };
         modules = [
@@ -142,10 +145,10 @@
   };
 
   # Noctalia Shell
-  programs.noctalia-shell = {
-    enable = true;
-    settings.general.avatarImage = ../assets/face.png;
-  };
+  # programs.noctalia-shell = {
+  #   enable = true;
+  #   settings.general.avatarImage = ../assets/face.png;
+  # };
 
   # wayland.windowManager.sway = {
   #   enable = true;
@@ -223,7 +226,7 @@
     wineWowPackages.stable
     ckan
     krita
-    jdk23
+    gimp
   ];
 
   # gtk = {
@@ -260,11 +263,11 @@
     ".config/sway/config".source = ../dotfiles/sway_config;
     ".config/sway/wallpaper.jpg".source = ../assets/wallpaper.jpg;
     ".config/wofi/style.css".source = ../dotfiles/wofi.css;
-    # ".config/foot/foot.ini".source = dotfiles/foot.ini;
-    # ".config/foot/theme.ini".source = "${builtins.fetchGit {
-    #     url = "https://github.com/tinted-theming/tinted-foot";
-    #     rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
-    # }}/colors/base16-monokai.ini";
+    ".config/foot/foot.ini".source = ../dotfiles/foot.ini;
+    ".config/foot/theme.ini".source = "${builtins.fetchGit {
+        url = "https://github.com/tinted-theming/tinted-foot";
+        rev = "e558fe47e187093313f19fa6a9eea61940ffbd6b";
+    }}/colors/base16-monokai.ini";
     ".config/nushell/theme.nu".source = "${pkgs.nu_scripts}/share/nu_scripts/themes/nu-themes/monokai.nu";
     ".wezterm.lua".source = ../dotfiles/wezterm.lua;
     ".emacs".source = ../dotfiles/init.el;
@@ -304,10 +307,6 @@
   #
   home.sessionVariables = {
     GRIM_DEFAULT_DIR = /home/ksp/Pictures/Grim;
-
-    # Needed for KDE things
-    XDG_DATA_DIRS = "$HOME/kde/usr/share:$XDG_DATA_DIRS";
-    QT_PLUGIN_PATH = "$HOME/kde/usr/lib/plugins:$QT_PLUGIN_PATH";
   };
 
   # Let Home Manager install and manage itself.

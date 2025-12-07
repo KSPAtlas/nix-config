@@ -19,18 +19,14 @@
     };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        quickshell.follows = "quickshell";
-      };
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
-  let system = "x86_64-linux";
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
       pkgs = import nixpkgs {
-        inherit system;
-
+        hostPlatform.system = "x86_64-linux";
       	config.allowUnfree = true; # Allow using unfree software like NVIDIA drivers or Steam
       };
     in {
@@ -58,7 +54,6 @@
             ./nixos/boot.nix
             ./nixos/nix.nix
             ./nixos/gui.nix
-            # ./nixos/stylix.nix
             ./nixos/networking.nix
             ./nixos/locale.nix
             ./nixos/users.nix
@@ -67,10 +62,7 @@
             ./nixos/programming.nix
             ./nixos/printer.nix
             ./nixos/miscpkgs.nix
-            ./nixos/gpupassthrough.nix
             inputs.chaotic.nixosModules.default
-            # inputs.nixos-cosmic.nixosModules.default
-            inputs.noctalia.homeModules.default
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;

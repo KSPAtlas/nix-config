@@ -46,14 +46,17 @@
   services.desktopManager.plasma6.enable = true;
 
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages."${system}".twilight
+    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".twilight
     # inputs.wezterm.packages."${pkgs.system}".default
-    inputs.drawterm.packages."${pkgs.system}".default
+    inputs.drawterm.packages."${stdenv.hostPlatform.system}".default
     wezterm
 
     # fuzzel
     # waybar
-    inputs.noctalia.packages."${system}".default
+    inputs.noctalia.packages."${stdenv.hostPlatform.system}".default
+    inputs.quickshell.packages."${stdenv.hostPlatform.system}".default
+    xwayland-satellite
+    nautilus # Needed for file picker
 
     # gnomeExtensions.blur-my-shell
     # gnomeExtensions.gsconnect
@@ -69,9 +72,9 @@
   #   style = lib.mkForce "kvantum";
   # };
 
-  # programs.foot = {
-  #   enable = true;
-  # };
+  programs.foot = {
+    enable = true;
+  };
   
   # Using GDM right now
   # programs.regreet = {
@@ -126,7 +129,7 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     fira-code
     fira-code-symbols
     jetbrains-mono
