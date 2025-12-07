@@ -629,4 +629,8 @@ layer-rule {
     place-within-backdrop true
 }
 
+cursor {
+    xcursor-theme "graphite-dark"
+}
+
 spawn-at-startup "noctalia-shell"

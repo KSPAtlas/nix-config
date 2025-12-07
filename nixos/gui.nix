@@ -61,6 +61,9 @@
     # gnomeExtensions.blur-my-shell
     # gnomeExtensions.gsconnect
     # gnomeExtensions.appindicator
+
+    # Cursor theme
+    graphite-cursors    
   ];
 
   # Niri
