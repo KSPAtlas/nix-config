@@ -29,7 +29,7 @@
     carapace.enableNushellIntegration = true;
     zoxide.enable = true;
     zoxide.enableNushellIntegration = true;
-    # starship.enable = true;
+    starship.enable = true;
 
     direnv = {
       enable = true;
@@ -112,16 +112,16 @@
           select = "underline";
         };
 
-        keys.insert = {          
-          up = "no_op";
-          down = "no_op";
-          left = "no_op";
-          right = "no_op";
-          pageup = "no_op";
-          pagedown = "no_op";
-          home = "no_op";
-          end = "no_op";
-        };
+        # keys.insert = {          
+        #   up = "no_op";
+        #   down = "no_op";
+        #   left = "no_op";
+        #   right = "no_op";
+        #   pageup = "no_op";
+        #   pagedown = "no_op";
+        #   home = "no_op";
+        #   end = "no_op";
+        # };
       };
 
       languages = {
@@ -159,10 +159,10 @@
   #   };
   # };
   
-  # gtk.iconTheme = {
-  #   name = "kora";
-  #   package = pkgs.kora-icon-theme;
-  # };
+  gtk.iconTheme = {
+    name = "kora";
+    package = pkgs.kora-icon-theme;
+  };
 
   # qt = {
   #   enable = true;
@@ -219,6 +219,8 @@
     racket
     vscodium
     obsidian
+    idris2
+    idris2Packages.idris2Lsp
 
     python314
     zig
@@ -227,6 +229,7 @@
     ckan
     krita
     gimp
+    lmms
   ];
 
   # gtk = {
@@ -250,19 +253,6 @@
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
-    ".config/sway/config".source = ../dotfiles/sway_config;
-    ".config/sway/wallpaper.jpg".source = ../assets/wallpaper.jpg;
-    ".config/wofi/style.css".source = ../dotfiles/wofi.css;
     ".config/foot/foot.ini".source = ../dotfiles/foot.ini;
     ".config/foot/theme.ini".source = "${builtins.fetchGit {
         url = "https://github.com/tinted-theming/tinted-foot";
@@ -272,6 +262,7 @@
     ".wezterm.lua".source = ../dotfiles/wezterm.lua;
     ".emacs".source = ../dotfiles/init.el;
     ".config/niri/config.kdl".source = ../dotfiles/niri.kdl;
+    ".config/starship.toml".source = ../dotfiles/starship.toml;
   };
 
   # Yes, an entire derivation for terminfo
