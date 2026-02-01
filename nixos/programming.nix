@@ -1,9 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.adb.enable = true;
-
-
   # Configure emacs
   services.emacs = {
     package = with pkgs; (

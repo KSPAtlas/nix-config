@@ -1,5 +1,3 @@
-source theme.nu
-
 # SQLite for history is more useful
 $env.config.history.file_format = "sqlite"
 

@@ -3,14 +3,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.follows = "nixos-cosmic/nixpkgs";
+    stylix.url = "github:nix-community/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    # wezterm.url = "github:wez/wezterm?dir=nix";
     drawterm.url = "github:KSPAtlas/drawterm-flake";
-    # nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixcord.url = "github:FlameFlag/nixcord";
+
 
     # For Noctalia
     quickshell = {
@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: let
       pkgs = import nixpkgs {
         hostPlatform.system = "x86_64-linux";
       	config.allowUnfree = true; # Allow using unfree software like NVIDIA drivers or Steam
@@ -49,6 +49,7 @@
           #       ];
           #     };
           #   }
+            stylix.nixosModules.stylix
             ./nixos/hardware-configuration.nix
             ./nixos/nvidia.nix
             ./nixos/boot.nix
@@ -62,12 +63,15 @@
             ./nixos/programming.nix
             ./nixos/printer.nix
             ./nixos/miscpkgs.nix
-            inputs.chaotic.nixosModules.default
+            ./nixos/stylix.nix
             home-manager.nixosModules.home-manager {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users.ksp = import ./hm/ksp.nix;
+                extraSpecialArgs = {
+                  inherit inputs;
+                };
               };
             }
           ];
