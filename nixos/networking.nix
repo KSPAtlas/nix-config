@@ -14,4 +14,9 @@
       { from = 1714; to = 1764; }
     ];
   };
+
+  programs.localsend = {
+    enable = true;
+    openFirewall = true;
+  };
 }

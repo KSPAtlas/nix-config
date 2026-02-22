@@ -31,9 +31,11 @@
   nix.settings = {
     trusted-public-keys = [
       "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" # haskell.nix
+      "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
     ];
     substituters = [
-      "https://cache.iog.io"
+      "https://cache.iog.io" # haskell.nix
+      "https://nixcache.reflex-frp.org"
     ];
   };
 

@@ -6,6 +6,7 @@
     curl
     git
     appimage-run
+    runapp
   ];
 
   services.flatpak.enable = true;

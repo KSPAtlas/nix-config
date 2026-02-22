@@ -2,7 +2,7 @@
 
 {
   time.timeZone = "GB";
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "pl_PL.UTF-8";
   i18n.supportedLocales = [ "all" ];
   # i18n.inputMethod = {
   #   enable = true;

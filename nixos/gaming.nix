@@ -8,7 +8,21 @@
   programs.gamemode.enable = true;
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
+    capSysNice = false; # Disabled, as this is known to break Steam
+  };
+
+  # Use ananicy instead
+
+  services.ananicy = {
+    enable = true;
+    package = pkgs.ananicy-cpp;
+    rulesProvider = pkgs.ananicy-cpp;
+    extraRules = [
+      {
+        "name" = "gamescope";
+        "nice" = -20;
+      }
+    ];
   };
 
   environment.systemPackages = with pkgs; [

@@ -71,7 +71,7 @@ def xkcd [
     } else { $number }
     let xkcd = (http get $"https://xkcd.com/($num)/info.0.json")
     print {title: $xkcd.title, date: ($"($xkcd.year)-($xkcd.month)-($xkcd.day)" | into datetime), num: $xkcd.num, alt: $xkcd.alt}
-    http get $xkcd.img | img2sixel
+    http get $xkcd.img | chafa 
 }
 
 let nix_config_path = $"($env.HOME)/nixcfg"
@@ -84,6 +84,11 @@ def "qnix r" [] {
 # Rebuild the Nix system quickly for iterative dev
 def "qnix f" [] {
     nixos-rebuild switch --sudo --fast --flake $nix_config_path
+}
+
+# Rebuild the system as a test, to commit later
+def "qnix t" [] {
+    nixos-rebuild test --sudo --flake $nix_config_path
 }
 
 # List packages in a nix shell
@@ -103,6 +108,42 @@ def "qnix source" [
     | each {|it| readlink -f $it.path } # Get the real nix store path
     | where {|it| $it starts-with '/nix/store' } # Only count executables that are actually in the nix store
     | parse -r '[a-z0-9]{32}-(?<package>[^0-9]*)-(?<version>.[^/]*)' # Extract the names and versions of the packages
+}
+
+# Quick wrapper for nix run from nixpkgs
+def "qnix run" [
+    pkg: string # The package to run
+] {
+    nix run $"nixpkgs#($pkg)"
+}
+
+# Quick wrapper for nix shell from nixpkgs
+def "qnix shell" [
+    ...pkgs: string # The packages to include in the shell
+] {
+    $pkgs
+    | each {|it| $"nixpkgs#($it)" }
+    | nix shell ...$in
+}
+
+# Perform an action on a systemd app service
+def qapp [
+    action: string # The systemd action to perform
+    app: string # The app to search for
+] {
+    let apps = systemctl --user --type service --state running
+               | from ssv -am 1
+               | where UNIT =~ ".service"
+               | find $app
+               | get UNIT
+               | ansi strip
+
+    let app = if ($apps | length) > 1 {
+        $apps | input list
+    } else {
+        $apps.0
+    }
+    systemctl $action --user $app
 }
 
 alias edit = hx

@@ -1,12 +1,22 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [ 
-    zls
-    nixd
-    python315PackagesPackages.python-lsp-server
     racket
+
+    python314
+    python314Packages.python-lsp-server
+    
+    zig
+    zls
+
+    nixd
+    
     idris2
     idris2Packages.idris2Lsp
-    python314
-    zig
+
+    ghc
+    haskell-language-server
   ];
+
+  # Enable pretty printing in GHCi
+  home.file.".ghci".source = ../dotfiles/ghci.conf;
 }

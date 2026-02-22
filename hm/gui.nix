@@ -2,7 +2,10 @@
   programs.noctalia-shell = {
     enable = true;
     settings = {
-      general.avatarImage = ../assets/face.png;
+      general = {
+        avatarImage = ../assets/face.png;
+        language = "pl";
+      };
 
       bar = {
         widgets = {
@@ -37,7 +40,8 @@
             }
             {
               id = "ControlCenter";
-              useDistroLogo = true;
+              useDistroLogo = false;
+              icon = "snowflake";
             }
           ];
         };
@@ -55,7 +59,10 @@
         ];
 
         iconMode = "native";
-        terminalCommand = "foot";
+        terminalCommand = "ghostty -e";
+
+        customLaunchPrefixEnabled = true;
+        customLaunchPrefix = "runapp";
       };
 
       dock.enabled = false;

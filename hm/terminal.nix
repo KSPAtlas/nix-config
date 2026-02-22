@@ -36,13 +36,17 @@
         enable = true;
         enableNushellIntegration = true;
         nix-direnv.enable = true;
+        config = {
+          warn_timeout = "0s";
+          hide_env_diff = true;
+        };
       };
 
       fastfetch = {
         enable = true;
         settings = {
           logo = {
-            type = "sixel";
+            type = "kitty";
             source = ../assets/nixlogo.png;
             height = 27;
           };
@@ -82,14 +86,23 @@
     };
 
     
-  programs.foot = {
+  # programs.foot = {
+  #   enable = true;
+  #   settings = {
+  #     main = {
+  #       shell = "nu";
+  #       pad = "10x10";
+  #     };
+  #     csd.preferred = "none";
+  #   };
+  # };
+
+  programs.ghostty = {
     enable = true;
+    systemd.enable = true;
     settings = {
-      main = {
-        shell = "nu";
-        pad = "10x10";
-      };
-      csd.preferred = "none";
+      window-padding-x = 8;
+      window-padding-y = 8;
     };
   };
 
@@ -99,6 +112,6 @@
     btop
     vivid
     unzip
-    libsixel
+    chafa
   ];
 }

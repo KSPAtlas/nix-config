@@ -56,7 +56,7 @@
     # fuzzel
     # waybar
     inputs.noctalia.packages."${stdenv.hostPlatform.system}".default
-    inputs.quickshell.packages."${stdenv.hostPlatform.system}".default
+    quickshell
     xwayland-satellite
     nautilus # Needed for file picker
 
@@ -78,9 +78,9 @@
   #   style = lib.mkForce "kvantum";
   # };
 
-  programs.foot = {
-    enable = true;
-  };
+  # programs.foot = {
+    # enable = true;
+  # };
 
   services.gvfs.enable = true;
   
