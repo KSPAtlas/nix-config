@@ -19,4 +19,6 @@
       firewall_backend = "iptables"
     '';
   };
+
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 }

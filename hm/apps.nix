@@ -41,7 +41,9 @@ programs.nixcord = {
     gimp
     lmms
     kdePackages.kate
-    wineWowPackages.stable
+    wineWow64Packages.stable
+    blender
+    godot
   ];
 }
 

@@ -39,13 +39,15 @@
   # };
 
   # KDE
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "sddm-astronaut-theme";
-    extraPackages = [ pkgs.sddm-astronaut ];
-  };
+  # services.displayManager.sddm = {
+  #   enable = true;
+  #   wayland.enable = true;
+  #   theme = "sddm-astronaut-theme";
+  #   extraPackages = [ pkgs.sddm-astronaut ];
+  # };
   # services.desktopManager.plasma6.enable = true;
+
+  programs.regreet.enable = true;
 
   environment.systemPackages = with pkgs; [
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".twilight

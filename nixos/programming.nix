@@ -6,15 +6,15 @@
     package = with pkgs; (
       (emacsPackagesFor emacs-pgtk).emacsWithPackages (
           epkgs: with epkgs; [
-            vterm
-            doom-themes
-            evil
+            vterm # Terminal emulator inside Emacs
+            doom-themes # Cool themes
 
+            # File explorer
             treemacs
-            treemacs-evil
             treemacs-magit
             treemacs-nerd-icons
 
+            # Git
             magit
             forge
             code-review
@@ -23,6 +23,7 @@
 
             haskell-mode
             nix-mode
+            zig-mode
 
             corfu
             cape
@@ -41,14 +42,16 @@
       	      tree-sitter-elisp
       	      tree-sitter-json
       	      tree-sitter-markdown
+              tree-sitter-zig
       	    ]))
       	    tree-sitter-langs
 
             indent-bars
             ligature
             anzu
-            evil-anzu
             ultra-scroll
+            lsp-mode
+            hl-todo
           ]
         )
     );
