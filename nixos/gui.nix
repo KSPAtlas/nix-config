@@ -74,11 +74,10 @@
   # Niri
   programs.niri.enable = true;
 
-  # qt = {
-  #   enable = true;
-  #   platformTheme = "qt5ct";
-  #   style = lib.mkForce "kvantum";
-  # };
+  qt = {
+    enable = true;
+    style = "breeze";
+  };
 
   # programs.foot = {
     # enable = true;
@@ -135,6 +134,8 @@
     enable = true;
     pulse.enable = true;
   };
+
+  stylix.targets.qt.enable = false;
 
   fonts.packages = with pkgs; [
     noto-fonts

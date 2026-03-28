@@ -1,7 +1,10 @@
 { config, lib, pkgs, ... }:
 
 {
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.vhostUserPackages = [ pkgs.virtiofsd ];
+  };
   programs.virt-manager.enable = true;
   networking.firewall.trustedInterfaces = [ "virbr0" ];
 
@@ -12,6 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     distrobox
+    nvidia-container-toolkit
   ];
 
   environment.etc = {

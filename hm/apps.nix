@@ -5,7 +5,7 @@ programs.nixcord = {
 
     equibop.enable = true;
     config.plugins = {
-      anammox.enable = true;
+      # anammox.enable = true;
       betterAudioPlayer.enable = true;
       betterGifAltText.enable = true;
       betterUploadButton.enable = true;
@@ -19,6 +19,7 @@ programs.nixcord = {
       gitHubRepos.enable = true;
       holyNotes.enable = true;
       memberCount.enable = true;
+      iLoveSpam.enable = true;
     };
   };
 
@@ -39,11 +40,13 @@ programs.nixcord = {
     ckan
     krita
     gimp
-    lmms
     kdePackages.kate
+    kdePackages.konsole # For kate
     wineWow64Packages.stable
     blender
     godot
+    ardour
+    lapce
   ];
 }
 
