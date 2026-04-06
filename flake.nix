@@ -54,7 +54,6 @@
             ./nixos/users.nix
             ./nixos/virtualisation.nix
             ./nixos/gaming.nix
-            ./nixos/programming.nix
             ./nixos/printer.nix
             ./nixos/miscpkgs.nix
             ./nixos/stylix.nix

@@ -72,4 +72,5 @@
   stylix.targets.nixcord.enable = false;
 
   home.file.".config/niri/config.kdl".source = ../dotfiles/niri.kdl;
+  gtk.gtk4.theme = null;
 }

@@ -7,7 +7,6 @@
     "flakes"
   ];
 
-  nix.package = pkgs.lixPackageSets.latest.lix;
 
   nix.settings.auto-optimise-store = true;
 
@@ -17,35 +16,6 @@
     automatic = true;
     options = "--delete-older-than 7d";
   };
-
-  # Cachix for wezterm
-  # nix.settings = {
-  #   substituters = [
-  #     "https://cosmic.cachix.org/"
-  #   ];
-  #   trusted-public-keys = [
-  #     "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
-  #   ];
-  # };
-
-  # nix.settings = {
-  #   trusted-public-keys = [
-  #     "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ=" # haskell.nix
-  #     "ryantrinkle.com-1:JJiAKaRv9mWgpVAz8dwewnZe0AzzEAzPkagE9SP5NWI="
-  #   ];
-  #   substituters = [
-  #     "https://cache.iog.io" # haskell.nix
-  #     "https://nixcache.reflex-frp.org"
-  #   ];
-  # };
-
-  # programs.nix-ld = {
-  #   enable = true;
-  #   libraries = with pkgs; [
-  #     libunwind
-  #     libcxx
-  #   ];
-  # };
 
   system.stateVersion = "24.05";
 }

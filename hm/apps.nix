@@ -3,23 +3,30 @@
 programs.nixcord = {
     enable = true;
 
-    equibop.enable = true;
+    vesktop.enable = true;
     config.plugins = {
-      # anammox.enable = true;
-      betterAudioPlayer.enable = true;
       betterGifAltText.enable = true;
+      betterSessions.enable = true;
       betterUploadButton.enable = true;
-      characterCounter.enable = true;
       ClearURLs.enable = true;
-      equicordToolbox.enable = true;
       experiments.enable = true;
       fakeNitro.enable = true;
+      fakeProfileThemes.enable = true;
       fixYoutubeEmbeds.enable = true;
       forceOwnerCrown.enable = true;
-      gitHubRepos.enable = true;
-      holyNotes.enable = true;
+      friendsSince.enable = true;
+      loadingQuotes.enable = true;
       memberCount.enable = true;
+      mentionAvatars.enable = true;
+      messageLogger.enable = true;
       iLoveSpam.enable = true;
+      ReviewDB.enable = true;
+      roleColorEverywhere.enable = true;
+      serverInfo.enable = true;
+      showHiddenThings.enable = true;
+      vencordToolbox.enable = true;
+      whoReacted.enable = true;
+      youtubeAdblock.enable = true;
     };
   };
 
@@ -47,6 +54,7 @@ programs.nixcord = {
     godot
     ardour
     lapce
+    chromium
   ];
 }
 

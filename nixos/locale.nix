@@ -4,11 +4,6 @@
   time.timeZone = "GB";
   i18n.defaultLocale = "pl_PL.UTF-8";
   i18n.supportedLocales = [ "all" ];
-  # i18n.inputMethod = {
-  #   enable = true;
-  #   type = "fcitx5";
-  #   fcitx5.addons = with pkgs; [ fcitx5-rime kdePackages.fcitx5-qt ];
-  # };
   console = {
     font = "Lat2-Terminus16";
     # keyMap = "pl";

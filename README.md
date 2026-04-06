@@ -6,9 +6,9 @@ This is the NixOS configuration I use on my computer, I mostly use this repo for
 - flake
 - home-manager as module
 - nushell
-- sway
+- niri
+- noctalia
 - regreet
-- zen browser
 - steam
 - nvidia
 - stylix

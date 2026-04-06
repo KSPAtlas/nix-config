@@ -1,13 +1,6 @@
 { config, lib, pkgs, ... }:
 {
-
-  # Enable graphics driver in NixOS unstable/NixOS 24.11
   hardware.graphics.enable = true;
-  # The same as above but for NixOS 23.11
-  #hardware.opengl = {
-  #  enable = true;
-  #  driSupport = true;
-  #};
 
   # Load "nvidia" driver for Xorg and Wayland
   services.xserver.videoDrivers = ["nvidia"];
